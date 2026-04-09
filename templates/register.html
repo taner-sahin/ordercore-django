@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container my-5" style="max-width: 400px;">
+
+    <div class="card shadow-sm p-4">
+
+        <h2 class="mb-4 text-center">
+            Kayıt Ol
+        </h2>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger text-center">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Kullanıcı Adı
+                </label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    E-Posta (opsiyonel)
+                </label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Şifre
+                </label>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Şifre Tekrar
+                </label>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+            </div>
+
+            <button class="btn btn-primary w-100 mt-2" type="submit">
+                Kayıt Ol
+            </button>
+
+        </form>
+
+        <p class="mt-4 text-center small">
+            Hesabınız var mı?
+            <a href="{% url 'accounts:login' %}" class="text-decoration-none fw-bold">
+                Giriş Yap
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
