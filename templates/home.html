@@ -7,22 +7,26 @@
   <div class="row">
     {% for product in home_products %}
     <div class="col-md-4 mb-4">
-      <div class="card h-100">
+      
+      <a href="{% url 'products:product_detail' product.slug %}" 
+   class="text-decoration-none text-dark">
+
+    <div class="card h-100">
+        
         {% if product.image %}
-        <img
-          src="{{ product.image.url }}"
-          class="card-img-top"
-          style="height: 280px; object-fit: cover"
-          alt="{{ product.name }}"
-        />
+        <img src="{{ product.image.url }}" 
+             class="card-img-top"
+             style="height: 200px; object-fit: cover;">
         {% endif %}
 
         <div class="card-body">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text">{{ product.price }} TL</p>
-          <p class="card-text">{{ product.category.name }}</p>
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.price }} TL</p>
         </div>
-      </div>
+
+    </div>
+
+</a>
     </div>
     {% empty %}
     <p>Ürün bulunamadı.</p>
