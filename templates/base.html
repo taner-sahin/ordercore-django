@@ -30,88 +30,81 @@
       <div class="container">İkinci ürüne sepette %20 indirim!</div>
     </div>
 
-  <nav class="navbar navbar-expand-lg border-bottom">
-  <div class="container">
+    <nav class="navbar navbar-expand-lg border-bottom">
+      <div class="container">
 
-    <!-- LOGO -->
-    <a class="navbar-brand fw-bold" href="/">OrderCore</a>
+        <!-- LOGO -->
+        <a class="navbar-brand fw-bold" href="/">OrderCore</a>
 
-    <!-- MOBİL BUTON -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <!-- MOBİL BUTON -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <!-- MENÜ -->
-    <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- MENÜ -->
+        <div class="collapse navbar-collapse" id="navbarNav">
 
-      <!-- SOL -->
-      <ul class="navbar-nav">
-    <li class="nav-item">
-        <a class="nav-link" href="/">Ana Sayfa</a>
-    </li>
+          <!-- SOL -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Ana Sayfa</a>
+            </li>
 
-    {% for category in nav_categories %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'products:category_products' category.slug %}">
-            {{ category.name }}
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+            {% for category in nav_categories %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'products:category_products' category.slug %}">
+                {{ category.name }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
 
-      <!-- SAĞ -->
-      <ul class="navbar-nav ms-auto align-items-center gap-3">
+          <!-- SAĞ -->
+          <ul class="navbar-nav ms-auto align-items-center gap-3">
 
-        {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="#">Siparişlerim</a>
-          </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="#">Siparişlerim</a>
+              </li>
 
-          <li class="nav-item">
-            <a class="nav-link text-danger" href="{% url 'accounts:logout' %}">
-              Çıkış
-            </a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:login' %}">
-              Giriş
-            </a>
-          </li>
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="{% url 'accounts:logout' %}">
+                  Çıkış
+                </a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:login' %}">
+                  Giriş
+                </a>
+              </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:register' %}">
-              Kayıt Ol
-            </a>
-          </li>
-        {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:register' %}">
+                  Kayıt Ol
+                </a>
+              </li>
+            {% endif %}
 
-        <!-- SEPET -->
-        <li class="nav-item position-relative">
-          <a class="nav-link" href="#">
-            <i class="bi bi-bag"></i>
-            <span class="badge bg-dark position-absolute top-0 start-100 translate-middle">
-              0
-            </span>
-          </a>
-        </li>
+            <!-- BURAYA EKLENDİ -->
+            <li class="nav-item">
+              <a href="{% url 'cart:cart_detail' %}" class="btn btn-outline-dark">
+                Sepet ({{ cart_count }})
+              </a>
+            </li>
 
-      </ul>
+          </ul>
 
-    </div>
-  </div>
-</nav>
-    
-
-
-        {% block content %}{% endblock %}
+        </div>
       </div>
-    </main>
+    </nav>
+
+    {% block content %}{% endblock %}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
