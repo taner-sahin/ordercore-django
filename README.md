@@ -3,12 +3,8 @@
 Backend-focused Django e-commerce project built to practice real-world shopping flow logic.
 
 ## About
-OrderCore is the second e-commerce project in my backend-first Django learning roadmap.
 
-The main goal of this project is to build and understand a complete order system with a database-based cart structure, snapshot logic, and user-based order management.
-
-This project was developed step by step with a focus on understanding backend architecture instead of only building visual pages.
-
+Backend-focused Django e-commerce system with DB-based cart, order flow, snapshot logic, stock control, and user-based order management.
 ## Core Features
 - Authentication system (login / register / logout)
 - Dynamic navbar
